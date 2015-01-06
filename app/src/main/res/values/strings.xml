@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AppProm2</string>
+    <string name="hello_world">Nombre del Curso</string>
+    <string name="action_settings">Config. Promedio</string>
+    <string name="title_activity_config_prom">ConfigProm</string>
+
+</resources>
