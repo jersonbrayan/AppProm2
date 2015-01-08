@@ -6,7 +6,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.v2.jbp.appprom2.ConfigProm"
     android:orientation="vertical"
-    android:id="@+id/mTable">
+    android:id="@+id/mTable"
+    android:background="#452bff24">
 
     <ScrollView
         android:layout_width="fill_parent"

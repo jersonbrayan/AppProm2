@@ -25,14 +25,16 @@
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"></TabWidget>
+                    android:layout_height="wrap_content"
+                    android:background="#bcffae34"></TabWidget>
 
                 <FrameLayout
                     android:id="@android:id/tabcontent"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:orientation="horizontal"
-                    android:clickable="false">
+                    android:clickable="false"
+                    android:background="#452bff24">
 
                     <LinearLayout
                         android:id="@+id/tab1"
@@ -54,7 +56,12 @@
                             android:text="Config. Promedio"
                             android:id="@+id/button2"
                             android:onClick="btnConfigProm"
-                            android:layout_gravity="center_horizontal" />
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/buttonshape"
+                            android:shadowDx="0"
+                            android:shadowDy="0"
+                            android:shadowRadius="5"/>
+
 
                     </LinearLayout>
 
