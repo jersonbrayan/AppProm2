@@ -56,17 +56,15 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void Mapeo(){
-        ImgAgregar = (ImageButton) findViewById(R.id.btn_crear_curso);
+        ImgAgregar = (ImageButton) findViewById(R.id.btn_nuevo_curso);
         ImgEditar = (ImageButton) findViewById(R.id.btn_editar_curso);
         ImgEliminar = (ImageButton) findViewById(R.id.btn_eliminar_curso);
         ImgConfig = (ImageButton) findViewById(R.id.btn_blanco);
     }
 
-    public void btnConfigProm(View v){
+    public void btnNuevo(View v){
         Intent i = new Intent(this,ConfigProm.class);
         startActivity(i);
-
-        //Toast.makeText(this,"YES",Toast.LENGTH_SHORT).show();
     }
 
     @Override
