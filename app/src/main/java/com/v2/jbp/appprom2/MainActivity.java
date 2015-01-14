@@ -13,7 +13,7 @@ import android.widget.TabHost;
 
 
 public class MainActivity extends ActionBarActivity {
-    ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig;
+    ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig,tit_share;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -22,17 +22,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         inicializarTabs();
         Mapeo();
-
-        /*final ActionBar actionBar = getActionBar();
-        actionBar.setCustomView(R.layout.actionbar_custom_view_home);
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar
-                .setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayUseLogoEnabled(false);
-        actionBar.setDisplayShowHomeEnabled(false);
-*/
-
-
     }
 
     private void inicializarTabs() {
@@ -60,7 +49,10 @@ public class MainActivity extends ActionBarActivity {
         ImgEditar = (ImageButton) findViewById(R.id.btn_editar_curso);
         ImgEliminar = (ImageButton) findViewById(R.id.btn_eliminar_curso);
         ImgConfig = (ImageButton) findViewById(R.id.btn_blanco);
+        //tit_share = (ImageButton) findViewById(R.id.btn_share);
     }
+
+
 
     public void btnNuevo(View v){
         Intent i = new Intent(this,ConfigProm.class);
@@ -70,7 +62,10 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.main,menu);
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        //return super.onCreateOptionsMenu(menu);
         return true;
     }
 

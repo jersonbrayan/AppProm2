@@ -125,7 +125,7 @@
             android:scaleType="fitEnd"
             android:background="@android:color/holo_orange_light"
             android:layout_gravity="left|right"
-            android:onClick="btnConfig" />
+            android:onClick="btnShare" />
 
         <ImageButton android:id="@+id/btn_help"
             android:layout_width="30dp"
@@ -133,7 +133,7 @@
             android:src="@drawable/ic_action_help"
             android:scaleType="fitEnd"
             android:background="@android:color/holo_orange_light"
-            android:onClick="btnConfig" />
+            android:onClick="btnHelp" />
 
         <ImageButton android:id="@+id/btn_blanco"
             android:layout_width="30dp"
