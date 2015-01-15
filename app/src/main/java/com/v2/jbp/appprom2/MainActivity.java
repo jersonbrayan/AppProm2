@@ -8,12 +8,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TabHost;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 public class MainActivity extends ActionBarActivity {
     ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig,tit_share;
+    String Cursos[] ={"Teo","Mate","Android","C#"};
+    ListView lv;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -22,6 +29,18 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         inicializarTabs();
         Mapeo();
+
+        ArrayAdapter<String> listado = new ArrayAdapter<String>(this,R.layout.b, Cursos);
+        lv.setAdapter(listado);
+
+        //PUBLICIDAD
+        // Buscar AdView como recurso y cargar una solicitud.
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+       // AdRequest adRequest = new AdRequest.Builder().build();    //PRODUCCION
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulador
+                .build();
+        adView.loadAd(adRequest);
     }
 
     private void inicializarTabs() {
@@ -50,6 +69,7 @@ public class MainActivity extends ActionBarActivity {
         ImgEliminar = (ImageButton) findViewById(R.id.btn_eliminar_curso);
         ImgConfig = (ImageButton) findViewById(R.id.btn_blanco);
         //tit_share = (ImageButton) findViewById(R.id.btn_share);
+        lv = (ListView) findViewById(R.id.listView);
     }
 
 
