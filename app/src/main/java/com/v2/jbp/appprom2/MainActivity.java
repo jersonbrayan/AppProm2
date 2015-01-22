@@ -5,22 +5,30 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView.OnItemClickListener;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
-    ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig,tit_share;
-    String Cursos[] ={"Teo","Mate","Android","C#"};
-    ListView lv;
+import SQLite.CursoDao;
+import Beans.Curso;
+
+
+public class MainActivity extends ActionBarActivity implements OnItemClickListener{
+    ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig;
+    private int requestCode =1;
+    private ListView lvCursos;
+    private CursoDao dataSource;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
@@ -30,17 +38,20 @@ public class MainActivity extends ActionBarActivity {
         inicializarTabs();
         Mapeo();
 
-        ArrayAdapter<String> listado = new ArrayAdapter<String>(this,R.layout.b, Cursos);
-        lv.setAdapter(listado);
+        List<Curso> listaCursos = dataSource.Listado();
+        ArrayAdapter<Curso> adaptador = new ArrayAdapter<Curso>(this,android.R.layout.simple_list_item_1,listaCursos);
+        lvCursos.setAdapter(adaptador);
+
+
 
         //PUBLICIDAD
         // Buscar AdView como recurso y cargar una solicitud.
         AdView adView = (AdView)this.findViewById(R.id.adView);
-       // AdRequest adRequest = new AdRequest.Builder().build();    //PRODUCCION
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulador
-                .build();
-        adView.loadAd(adRequest);
+        //AdRequest adRequest = new AdRequest.Builder().build();    //PRODUCCION
+        //AdRequest adRequest = new AdRequest.Builder()
+          //      .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)       // Emulador
+            //    .build();
+        //adView.loadAd(adRequest);
     }
 
     private void inicializarTabs() {
@@ -68,15 +79,19 @@ public class MainActivity extends ActionBarActivity {
         ImgEditar = (ImageButton) findViewById(R.id.btn_editar_curso);
         ImgEliminar = (ImageButton) findViewById(R.id.btn_eliminar_curso);
         ImgConfig = (ImageButton) findViewById(R.id.btn_blanco);
-        //tit_share = (ImageButton) findViewById(R.id.btn_share);
-        lv = (ListView) findViewById(R.id.listView);
+
+        dataSource = new CursoDao(this);
+        dataSource.AbreConexion();
+
+        lvCursos = (ListView) findViewById(R.id.listView);
+        lvCursos.setOnItemClickListener(this);
     }
 
 
 
     public void btnNuevo(View v){
         Intent i = new Intent(this,ConfigProm.class);
-        startActivity(i);
+        startActivityForResult(i,requestCode);
     }
 
     @Override
@@ -102,5 +117,39 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("Result","Se ejecuta onActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == this.requestCode && resultCode == RESULT_OK){
+            //Acualizar el Adapter
+            dataSource.AbreConexion();
+            refrescarLista();
+        }
+    }
+
+    private void refrescarLista() {
+        List<Curso> listaCursos = dataSource.Listado();
+        ArrayAdapter<Curso> adaptador = new ArrayAdapter<Curso>(this,android.R.layout.simple_list_item_1,listaCursos);
+        lvCursos.setAdapter(adaptador);
+    }
+
+    @Override
+    protected void onPause() {
+        dataSource.CierraConexion();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        dataSource.AbreConexion();
+        super.onResume();
     }
 }

@@ -1,5 +1,6 @@
 package com.v2.jbp.appprom2;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -9,25 +10,36 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import SQLite.CursoDao;
 
 
 public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
     Spinner spnNum;
-
     TextView tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11;
-    EditText et4,et3,et5,et6,et7,et8,et9,et10,et11;
+    EditText etCurso,et4,et3,et5,et6,et7,et8,et9,et10,et11;
+
+    private CursoDao dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_prom);
-        mapeo();
+
+        dataSource = new CursoDao(this);
+        dataSource.AbreConexion();
+
+        Mapeo();
+
+
+
     }
 
-    public void mapeo(){
+    public void Mapeo(){
         spnNum = (Spinner) findViewById(R.id.cboNum);
         spnNum.setOnItemSelectedListener(this);
+
+        etCurso = (EditText) findViewById(R.id.tCurso);
 
         tv3 = (TextView) findViewById(R.id.textView3);
         et4 = (EditText) findViewById(R.id.editText4);
@@ -92,11 +104,10 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
                 break;
             case 2:
                 /*for (int i=3;i<=4;i++){
-                    String m = "tv"+i+".setVisibility(View.VISIBLE)";
-                    Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
+                    String m = "tv"+i;
 
-                    tv+i.
-                }
+                    Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
+                }*/
                 /*for (int i=3;i<=7;i++){
                     String m = "tv"+i+".setVisibility(View.VISIBLE)";
                     Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
@@ -114,6 +125,7 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
                 et4.setHint("00");
                 et4.setVisibility(View.VISIBLE);
                 et4.requestFocus();
+
 
                 et3.setHint("00");
                 et3.setVisibility(View.VISIBLE);
@@ -138,7 +150,6 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
                 et4.setHint("00");
                 et4.setVisibility(View.VISIBLE);
                 et4.requestFocus();
-
 
                 et3.setHint("00");
                 et3.setVisibility(View.VISIBLE);
@@ -174,7 +185,28 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
 
     }
     public void btnGrabar(View v){
-        String s = et4.getText().toString();
-        Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
+        String curso = etCurso.getText().toString();
+
+        if (curso.length()==0)
+        {
+            etCurso.setError("Ingrese el curso");
+            etCurso.setBackgroundColor(Color.TRANSPARENT);
+        } else{
+            dataSource.CrearCurso(curso);
+            setResult(RESULT_OK);
+            finish();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        dataSource.CierraConexion();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        dataSource.AbreConexion();
+        super.onResume();
     }
 }
