@@ -76,10 +76,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
     private void Mapeo(){
         ImgAgregar = (ImageButton) findViewById(R.id.btn_nuevo_curso);
-        ImgEditar = (ImageButton) findViewById(R.id.btn_editar_curso);
-        ImgEliminar = (ImageButton) findViewById(R.id.btn_eliminar_curso);
         ImgConfig = (ImageButton) findViewById(R.id.btn_blanco);
-
         dataSource = new CursoDao(this);
         dataSource.AbreConexion();
 

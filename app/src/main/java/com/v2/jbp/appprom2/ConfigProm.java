@@ -16,8 +16,10 @@ import SQLite.CursoDao;
 
 public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
     Spinner spnNum;
-    TextView tv3,tv4,tv5,tv6,tv7,tv8,tv9,tv10,tv11;
-    EditText etCurso,et4,et3,et5,et6,et7,et8,et9,et10,et11;
+    EditText etCurso,et1,et2,et3,et4,et5,et6,et7,et8,et9,
+             et10,et11,et12,et13,et14,et15,et16,et17,et18,
+             et19,et20,et21;
+    TextView tv3,tv4,tv5,tv6,tv7,tv8,tv9;
 
     private CursoDao dataSource;
 
@@ -30,9 +32,6 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
         dataSource.AbreConexion();
 
         Mapeo();
-
-
-
     }
 
     public void Mapeo(){
@@ -41,32 +40,46 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
 
         etCurso = (EditText) findViewById(R.id.tCurso);
 
-        tv3 = (TextView) findViewById(R.id.textView3);
-        et4 = (EditText) findViewById(R.id.editText4);
-
-        tv4 = (TextView) findViewById(R.id.textView4);
+        et1 = (EditText) findViewById(R.id.editText1);
+        et2 = (EditText) findViewById(R.id.editText2);
         et3 = (EditText) findViewById(R.id.editText3);
+        tv3 = (TextView) findViewById(R.id.textView3);
 
-        tv5 = (TextView) findViewById(R.id.textView5);
+
+        et4 = (EditText) findViewById(R.id.editText4);
         et5 = (EditText) findViewById(R.id.editText5);
-
-        tv6 = (TextView) findViewById(R.id.textView6);
         et6 = (EditText) findViewById(R.id.editText6);
+        tv4 = (TextView) findViewById(R.id.textView4);
 
-        tv7 = (TextView) findViewById(R.id.textView7);
+
         et7 = (EditText) findViewById(R.id.editText7);
-
-        tv8 = (TextView) findViewById(R.id.textView8);
         et8 = (EditText) findViewById(R.id.editText8);
-
-        tv9 = (TextView) findViewById(R.id.textView9);
         et9 = (EditText) findViewById(R.id.editText9);
+        tv5 = (TextView) findViewById(R.id.textView5);
 
-        tv10 = (TextView) findViewById(R.id.textView10);
+
         et10 = (EditText) findViewById(R.id.editText10);
-
-        tv11 = (TextView) findViewById(R.id.textView11);
         et11 = (EditText) findViewById(R.id.editText11);
+        et12 = (EditText) findViewById(R.id.editText12);
+        tv6 = (TextView) findViewById(R.id.textView6);
+
+
+        et13 = (EditText) findViewById(R.id.editText13);
+        et14 = (EditText) findViewById(R.id.editText14);
+        et15 = (EditText) findViewById(R.id.editText15);
+        tv7 = (TextView) findViewById(R.id.textView7);
+
+
+        et16 = (EditText) findViewById(R.id.editText16);
+        et17 = (EditText) findViewById(R.id.editText17);
+        et18 = (EditText) findViewById(R.id.editText18);
+        tv8 = (TextView) findViewById(R.id.textView8);
+
+
+        et19 = (EditText) findViewById(R.id.editText19);
+        et20 = (EditText) findViewById(R.id.editText20);
+        et21 = (EditText) findViewById(R.id.editText21);
+        tv9 = (TextView) findViewById(R.id.textView9);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,88 +107,429 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
        int num = Integer.parseInt(spnNum.getSelectedItem().toString());
-        String tv = "tv";
-        String et = "et";
-
         switch (num){
             case 0:
+
+                et1.setText("");
+                et1.setVisibility(View.GONE);
+                et2.setText("");
+                et2.setVisibility(View.GONE);
+                et3.setText("");
+                et3.setVisibility(View.GONE);
+                tv3.setVisibility(View.GONE);
+                et4.setText("");
+                et4.setVisibility(View.GONE);
+                et5.setText("");
+                et5.setVisibility(View.GONE);
+                et6.setText("");
+                et6.setVisibility(View.GONE);
+                tv4.setVisibility(View.GONE);
+                et7.setText("");
+                et7.setVisibility(View.GONE);
+                et8.setText("");
+                et8.setVisibility(View.GONE);
+                et9.setText("");
+                et9.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+                et10.setText("");
+                et10.setVisibility(View.GONE);
+                et11.setText("");
+                et11.setVisibility(View.GONE);
+                et12.setText("");
+                et12.setVisibility(View.GONE);
+                tv6.setVisibility(View.GONE);
+                et13.setText("");
+                et13.setVisibility(View.GONE);
+                et14.setText("");
+                et14.setVisibility(View.GONE);
+                et15.setText("");
+                et15.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et2.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
                 break;
             case 1:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+
+
+                et4.setText("");
+                et4.setVisibility(View.GONE);
+                et5.setText("");
+                et5.setVisibility(View.GONE);
+                et6.setText("");
+                et6.setVisibility(View.GONE);
+                tv4.setVisibility(View.GONE);
+                et7.setText("");
+                et7.setVisibility(View.GONE);
+                et8.setText("");
+                et8.setVisibility(View.GONE);
+                et9.setText("");
+                et9.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+                et10.setText("");
+                et10.setVisibility(View.GONE);
+                et11.setText("");
+                et11.setVisibility(View.GONE);
+                et12.setText("");
+                et12.setVisibility(View.GONE);
+                tv6.setVisibility(View.GONE);
+                et13.setText("");
+                et13.setVisibility(View.GONE);
+                et14.setText("");
+                et14.setVisibility(View.GONE);
+                et15.setText("");
+                et15.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
                 break;
             case 2:
-                /*for (int i=3;i<=4;i++){
-                    String m = "tv"+i;
-
-                    Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
-                }*/
-                /*for (int i=3;i<=7;i++){
-                    String m = "tv"+i+".setVisibility(View.VISIBLE)";
-                    Toast.makeText(this,m,Toast.LENGTH_SHORT).show();
-
-                    //tv3.setVisibility(View.VISIBLE);
-
-                }*/
-
-                tv3.setVisibility(View.VISIBLE);
-                tv4.setVisibility(View.VISIBLE);
-                tv5.setVisibility(View.GONE);
-                tv6.setVisibility(View.GONE);
-                tv7.setVisibility(View.GONE);
-
-                et4.setHint("00");
-                et4.setVisibility(View.VISIBLE);
-                et4.requestFocus();
-
-
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
                 et3.setHint("00");
                 et3.setVisibility(View.VISIBLE);
-
-                et5.setVisibility(View.GONE);
-
-                et6.setVisibility(View.GONE);
-
-                et7.setVisibility(View.GONE);
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
                 tv3.setVisibility(View.VISIBLE);
-                tv4.setVisibility(View.VISIBLE);
-                tv5.setVisibility(View.VISIBLE);
-                tv6.setVisibility(View.VISIBLE);
-                tv7.setVisibility(View.VISIBLE);
-
-                et4.setHint("00");
+                et4.setHint("Ejm:Examen 2");
                 et4.setVisibility(View.VISIBLE);
-                et4.requestFocus();
-
-                et3.setHint("00");
-                et3.setVisibility(View.VISIBLE);
-
                 et5.setHint("00");
                 et5.setVisibility(View.VISIBLE);
-
                 et6.setHint("00");
                 et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
 
-                et7.setHint("00");
+                et7.setText("");
+                et7.setVisibility(View.GONE);
+                et8.setText("");
+                et8.setVisibility(View.GONE);
+                et9.setText("");
+                et9.setVisibility(View.GONE);
+                tv5.setVisibility(View.GONE);
+                et10.setText("");
+                et10.setVisibility(View.GONE);
+                et11.setText("");
+                et11.setVisibility(View.GONE);
+                et12.setText("");
+                et12.setVisibility(View.GONE);
+                tv6.setVisibility(View.GONE);
+                et13.setText("");
+                et13.setVisibility(View.GONE);
+                et14.setText("");
+                et14.setVisibility(View.GONE);
+                et15.setText("");
+                et15.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
+                break;
+            case 3:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                et4.setHint("Ejm:Examen 2");
+                et4.setVisibility(View.VISIBLE);
+                et5.setHint("00");
+                et5.setVisibility(View.VISIBLE);
+                et6.setHint("00");
+                et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                et7.setHint("Ejm:Examen 3");
                 et7.setVisibility(View.VISIBLE);
+                et8.setHint("00");
+                et8.setVisibility(View.VISIBLE);
+                et9.setHint("00");
+                et9.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+
+                et10.setText("");
+                et10.setVisibility(View.GONE);
+                et11.setText("");
+                et11.setVisibility(View.GONE);
+                et12.setText("");
+                et12.setVisibility(View.GONE);
+                tv6.setVisibility(View.GONE);
+                et13.setText("");
+                et13.setVisibility(View.GONE);
+                et14.setText("");
+                et14.setVisibility(View.GONE);
+                et15.setText("");
+                et15.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
+                break;
+            case 4:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                et4.setHint("Ejm:Examen 2");
+                et4.setVisibility(View.VISIBLE);
+                et5.setHint("00");
+                et5.setVisibility(View.VISIBLE);
+                et6.setHint("00");
+                et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                et7.setHint("Ejm:Examen 3");
+                et7.setVisibility(View.VISIBLE);
+                et8.setHint("00");
+                et8.setVisibility(View.VISIBLE);
+                et9.setHint("00");
+                et9.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+                et10.setHint("Ejm:Examen 4");
+                et10.setVisibility(View.VISIBLE);
+                et11.setHint("00");
+                et11.setVisibility(View.VISIBLE);
+                et12.setHint("00");
+                et12.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.VISIBLE);
+
+                et13.setText("");
+                et13.setVisibility(View.GONE);
+                et14.setText("");
+                et14.setVisibility(View.GONE);
+                et15.setText("");
+                et15.setVisibility(View.GONE);
+                tv7.setVisibility(View.GONE);
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
+                break;
+            case 5:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                et4.setHint("Ejm:Examen 2");
+                et4.setVisibility(View.VISIBLE);
+                et5.setHint("00");
+                et5.setVisibility(View.VISIBLE);
+                et6.setHint("00");
+                et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                et7.setHint("Ejm:Examen 3");
+                et7.setVisibility(View.VISIBLE);
+                et8.setHint("00");
+                et8.setVisibility(View.VISIBLE);
+                et9.setHint("00");
+                et9.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+                et10.setHint("Ejm:Examen 4");
+                et10.setVisibility(View.VISIBLE);
+                et11.setHint("00");
+                et11.setVisibility(View.VISIBLE);
+                et12.setHint("00");
+                et12.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.VISIBLE);
+                et13.setHint("Ejm:Examen 5");
+                et13.setVisibility(View.VISIBLE);
+                et14.setHint("00");
+                et14.setVisibility(View.VISIBLE);
+                et15.setHint("00");
+                et15.setVisibility(View.VISIBLE);
+                tv7.setVisibility(View.VISIBLE);
+
+                et16.setText("");
+                et16.setVisibility(View.GONE);
+                et17.setText("");
+                et17.setVisibility(View.GONE);
+                et18.setText("");
+                et18.setVisibility(View.GONE);
+                tv8.setVisibility(View.GONE);
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
                 break;
             case 6:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                et4.setHint("Ejm:Examen 2");
+                et4.setVisibility(View.VISIBLE);
+                et5.setHint("00");
+                et5.setVisibility(View.VISIBLE);
+                et6.setHint("00");
+                et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                et7.setHint("Ejm:Examen 3");
+                et7.setVisibility(View.VISIBLE);
+                et8.setHint("00");
+                et8.setVisibility(View.VISIBLE);
+                et9.setHint("00");
+                et9.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+                et10.setHint("Ejm:Examen 4");
+                et10.setVisibility(View.VISIBLE);
+                et11.setHint("00");
+                et11.setVisibility(View.VISIBLE);
+                et12.setHint("00");
+                et12.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.VISIBLE);
+                et13.setHint("Ejm:Examen 5");
+                et13.setVisibility(View.VISIBLE);
+                et14.setHint("00");
+                et14.setVisibility(View.VISIBLE);
+                et15.setHint("00");
+                et15.setVisibility(View.VISIBLE);
+                tv7.setVisibility(View.VISIBLE);
+                et16.setHint("Ejm:Examen 6");
+                et16.setVisibility(View.VISIBLE);
+                et17.setHint("00");
+                et17.setVisibility(View.VISIBLE);
+                et18.setHint("00");
+                et18.setVisibility(View.VISIBLE);
+                tv8.setVisibility(View.VISIBLE);
+
+                et19.setText("");
+                et19.setVisibility(View.GONE);
+                et20.setText("");
+                et20.setVisibility(View.GONE);
+                et21.setText("");
+                et21.setVisibility(View.GONE);
+                tv9.setVisibility(View.GONE);
                 break;
             case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
+                et1.setHint("Ejm:Examen 1");
+                et1.setVisibility(View.VISIBLE);
+                et1.requestFocus();
+                et2.setHint("00");
+                et2.setVisibility(View.VISIBLE);
+                et3.setHint("00");
+                et3.setVisibility(View.VISIBLE);
+                tv3.setVisibility(View.VISIBLE);
+                et4.setHint("Ejm:Examen 2");
+                et4.setVisibility(View.VISIBLE);
+                et5.setHint("00");
+                et5.setVisibility(View.VISIBLE);
+                et6.setHint("00");
+                et6.setVisibility(View.VISIBLE);
+                tv4.setVisibility(View.VISIBLE);
+                et7.setHint("Ejm:Examen 3");
+                et7.setVisibility(View.VISIBLE);
+                et8.setHint("00");
+                et8.setVisibility(View.VISIBLE);
+                et9.setHint("00");
+                et9.setVisibility(View.VISIBLE);
+                tv5.setVisibility(View.VISIBLE);
+                et10.setHint("Ejm:Examen 4");
+                et10.setVisibility(View.VISIBLE);
+                et11.setHint("00");
+                et11.setVisibility(View.VISIBLE);
+                et12.setHint("00");
+                et12.setVisibility(View.VISIBLE);
+                tv6.setVisibility(View.VISIBLE);
+                et13.setHint("Ejm:Examen 5");
+                et13.setVisibility(View.VISIBLE);
+                et14.setHint("00");
+                et14.setVisibility(View.VISIBLE);
+                et15.setHint("00");
+                et15.setVisibility(View.VISIBLE);
+                tv7.setVisibility(View.VISIBLE);
+                et16.setHint("Ejm:Examen 6");
+                et16.setVisibility(View.VISIBLE);
+                et17.setHint("00");
+                et17.setVisibility(View.VISIBLE);
+                et18.setHint("00");
+                et18.setVisibility(View.VISIBLE);
+                tv8.setVisibility(View.VISIBLE);
+                et19.setHint("Ejm:Examen 7");
+                et19.setVisibility(View.VISIBLE);
+                et20.setHint("00");
+                et20.setVisibility(View.VISIBLE);
+                et21.setHint("00");
+                et21.setVisibility(View.VISIBLE);
+                tv9.setVisibility(View.VISIBLE);
                 break;
         }
     }

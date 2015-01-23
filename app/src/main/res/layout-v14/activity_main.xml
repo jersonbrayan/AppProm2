@@ -92,7 +92,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:columnCount="6"
+        android:columnCount="4"
         android:rowCount="1">
 
 
@@ -104,30 +104,7 @@
             android:background="@android:color/holo_orange_light"
             android:onClick="btnNuevo" />
 
-        <ImageButton android:id="@+id/btn_editar_curso"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_action_edit"
-            android:scaleType="center"
-            android:background="@android:color/holo_orange_light"
-            android:onClick="btnEditar" />
-
-        <ImageButton android:id="@+id/btn_eliminar_curso"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_action_delete"
-            android:scaleType="center"
-            android:background="@android:color/holo_orange_light"
-            android:onClick="btnEliminar" />
-
-        <ImageButton android:id="@+id/btn_share"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_action_share"
-            android:scaleType="fitEnd"
-            android:background="@android:color/holo_orange_light"
-            android:layout_gravity="left|right"
-            android:onClick="btnShare" />
+        <!---->
 
         <ImageButton android:id="@+id/btn_help"
             android:layout_width="30dp"
@@ -143,7 +120,9 @@
             android:src="@drawable/ic_action_settings"
             android:scaleType="fitEnd"
             android:background="@android:color/holo_orange_light"
-            android:onClick="btnConfig" />
+            android:onClick="btnConfig"
+            android:layout_columnSpan="2"
+            android:layout_gravity="left|right" />
 
     </GridLayout>
 
