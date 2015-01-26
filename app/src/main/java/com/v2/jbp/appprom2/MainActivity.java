@@ -6,26 +6,29 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView.OnItemClickListener;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
 
 import java.util.List;
 
-import SQLite.CursoDao;
 import Beans.Curso;
+import SQLite.CursoDao;
 
 
 public class MainActivity extends ActionBarActivity implements OnItemClickListener{
-    ImageButton ImgAgregar,ImgEditar,ImgEliminar,ImgConfig;
+    ImageButton ImgAgregar,ImgConfig;
     private int requestCode =1;
     private ListView lvCursos;
     private CursoDao dataSource;
@@ -42,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
         ArrayAdapter<Curso> adaptador = new ArrayAdapter<Curso>(this,android.R.layout.simple_list_item_1,listaCursos);
         lvCursos.setAdapter(adaptador);
 
+        registerForContextMenu(lvCursos);
 
 
         //PUBLICIDAD
@@ -118,7 +122,15 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Toast.makeText(this,((TextView) view).getText(),Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        menu.setHeaderTitle(lvCursos.getAdapter().getItem(info.position).toString());
+        menu.add("Editar");
+        menu.add("Borrar");
     }
 
     @Override

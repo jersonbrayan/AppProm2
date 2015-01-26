@@ -43,7 +43,7 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
         et1 = (EditText) findViewById(R.id.editText1);
         et2 = (EditText) findViewById(R.id.editText2);
         et3 = (EditText) findViewById(R.id.editText3);
-        tv3 = (TextView) findViewById(R.id.textView3);
+        tv3 = (TextView) findViewById(R.id.textView1);
 
 
         et4 = (EditText) findViewById(R.id.editText4);
