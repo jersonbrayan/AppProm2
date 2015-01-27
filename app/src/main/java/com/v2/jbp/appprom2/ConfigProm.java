@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import SQLite.CursoDao;
 
@@ -19,9 +20,10 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
     EditText etCurso,et1,et2,et3,et4,et5,et6,et7,et8,et9,
              et10,et11,et12,et13,et14,et15,et16,et17,et18,
              et19,et20,et21;
-    TextView tv3,tv4,tv5,tv6,tv7,tv8,tv9;
+    TextView tid,tv3,tv4,tv5,tv6,tv7,tv8,tv9;
 
     private CursoDao dataSource;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,21 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
         dataSource.AbreConexion();
 
         Mapeo();
+        MuestraCod();
+    }
+
+    void MuestraCod(){
+        Bundle bun = getIntent().getExtras();
+        String n = (String) bun.getString("id");
+        int _cod = Integer.parseInt(n);
+        _cod++;
+        String new_cod = String.valueOf(_cod);
+        tid.setText(new_cod);
     }
 
     public void Mapeo(){
+        tid = (TextView) findViewById(R.id.textView19);
+
         spnNum = (Spinner) findViewById(R.id.cboNum);
         spnNum.setOnItemSelectedListener(this);
 
@@ -43,7 +57,7 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
         et1 = (EditText) findViewById(R.id.editText1);
         et2 = (EditText) findViewById(R.id.editText2);
         et3 = (EditText) findViewById(R.id.editText3);
-        tv3 = (TextView) findViewById(R.id.textView1);
+        tv3 = (TextView) findViewById(R.id.textView3);
 
 
         et4 = (EditText) findViewById(R.id.editText4);
@@ -169,7 +183,6 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
                 et3.setHint("00");
                 et3.setVisibility(View.VISIBLE);
                 tv3.setVisibility(View.VISIBLE);
-
 
                 et4.setText("");
                 et4.setVisibility(View.GONE);
@@ -540,16 +553,388 @@ public class ConfigProm extends ActionBarActivity implements AdapterView.OnItemS
     }
     public void btnGrabar(View v){
         String curso = etCurso.getText().toString();
+        int c_notas = Integer.parseInt(spnNum.getSelectedItem().toString());
+        int num = Integer.parseInt(spnNum.getSelectedItem().toString());
+        int _cod = Integer.parseInt(tid.getText().toString());
 
-        if (curso.length()==0)
-        {
-            etCurso.setError("Ingrese el curso");
-            etCurso.setBackgroundColor(Color.TRANSPARENT);
-        } else{
-            dataSource.CrearCurso(curso);
-            setResult(RESULT_OK);
-            finish();
-        }
+            switch (num) {
+                case 0:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else if (num==0){
+                        Toast.makeText(this,"Seleccione la cantidad de notas",Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case 1:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO TABLA DETALLE
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else{
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 2:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 3:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+
+                        String Et7= et7.getText().toString();
+                        String Et8= et8.getText().toString();
+                        int _Et8 = 0;
+                        _Et8 = Integer.parseInt(String.valueOf(_Et8));
+                        String Et9= et10.getText().toString();
+                        int _Et9 = 0;
+                        _Et9 = Integer.parseInt(String.valueOf(_Et9));
+
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0 ||
+                                Et7.length()==0 || Et8.length()==0 || Et9.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            dataSource.CrearCursoNota(_cod,Et7,_Et8,_Et9);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 4:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+
+                        String Et7= et7.getText().toString();
+                        String Et8= et8.getText().toString();
+                        int _Et8 = 0;
+                        _Et8 = Integer.parseInt(String.valueOf(_Et8));
+                        String Et9= et10.getText().toString();
+                        int _Et9 = 0;
+                        _Et9 = Integer.parseInt(String.valueOf(_Et9));
+
+                        String Et10= et10.getText().toString();
+                        String Et11= et11.getText().toString();
+                        int _Et11 = 0;
+                        _Et11 = Integer.parseInt(String.valueOf(_Et11));
+                        String Et12= et12.getText().toString();
+                        int _Et12 = 0;
+                        _Et12 = Integer.parseInt(String.valueOf(_Et12));
+
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0 ||
+                                Et7.length()==0 || Et8.length()==0 || Et9.length()==0 || Et10.length()==0 || Et11.length()==0 || Et12.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            dataSource.CrearCursoNota(_cod,Et7,_Et8,_Et9);
+                            dataSource.CrearCursoNota(_cod,Et10,_Et11,_Et12);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 5:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+
+                        String Et7= et7.getText().toString();
+                        String Et8= et8.getText().toString();
+                        int _Et8 = 0;
+                        _Et8 = Integer.parseInt(String.valueOf(_Et8));
+                        String Et9= et10.getText().toString();
+                        int _Et9 = 0;
+                        _Et9 = Integer.parseInt(String.valueOf(_Et9));
+
+                        String Et10= et10.getText().toString();
+                        String Et11= et11.getText().toString();
+                        int _Et11 = 0;
+                        _Et11 = Integer.parseInt(String.valueOf(_Et11));
+                        String Et12= et12.getText().toString();
+                        int _Et12 = 0;
+                        _Et12 = Integer.parseInt(String.valueOf(_Et12));
+
+                        String Et13= et13.getText().toString();
+                        String Et14= et14.getText().toString();
+                        int _Et14 = 0;
+                        _Et14 = Integer.parseInt(String.valueOf(_Et14));
+                        String Et15= et15.getText().toString();
+                        int _Et15 = 0;
+                        _Et15 = Integer.parseInt(String.valueOf(_Et15));
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0 ||
+                                Et7.length()==0 || Et8.length()==0 || Et9.length()==0 || Et10.length()==0 || Et11.length()==0 || Et12.length()==0 ||
+                                Et13.length()==0 || Et14.length()==0 || Et15.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            dataSource.CrearCursoNota(_cod,Et7,_Et8,_Et9);
+                            dataSource.CrearCursoNota(_cod,Et10,_Et11,_Et12);
+                            dataSource.CrearCursoNota(_cod,Et13,_Et14,_Et15);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 6:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+
+                        String Et7= et7.getText().toString();
+                        String Et8= et8.getText().toString();
+                        int _Et8 = 0;
+                        _Et8 = Integer.parseInt(String.valueOf(_Et8));
+                        String Et9= et10.getText().toString();
+                        int _Et9 = 0;
+                        _Et9 = Integer.parseInt(String.valueOf(_Et9));
+
+                        String Et10= et10.getText().toString();
+                        String Et11= et11.getText().toString();
+                        int _Et11 = 0;
+                        _Et11 = Integer.parseInt(String.valueOf(_Et11));
+                        String Et12= et12.getText().toString();
+                        int _Et12 = 0;
+                        _Et12 = Integer.parseInt(String.valueOf(_Et12));
+
+                        String Et13= et13.getText().toString();
+                        String Et14= et14.getText().toString();
+                        int _Et14 = 0;
+                        _Et14 = Integer.parseInt(String.valueOf(_Et14));
+                        String Et15= et15.getText().toString();
+                        int _Et15 = 0;
+                        _Et15 = Integer.parseInt(String.valueOf(_Et15));
+
+                        String Et16= et16.getText().toString();
+                        String Et17= et17.getText().toString();
+                        int _Et17 = 0;
+                        _Et17 = Integer.parseInt(String.valueOf(_Et17));
+                        String Et18= et18.getText().toString();
+                        int _Et18 = 0;
+                        _Et18 = Integer.parseInt(String.valueOf(_Et18));
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0 ||
+                                Et7.length()==0 || Et8.length()==0 || Et9.length()==0 || Et10.length()==0 || Et11.length()==0 || Et12.length()==0 ||
+                                Et13.length()==0 || Et14.length()==0 || Et15.length()==0 || Et16.length()==0 || Et7.length()==0 || Et18.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            dataSource.CrearCursoNota(_cod,Et7,_Et8,_Et9);
+                            dataSource.CrearCursoNota(_cod,Et10,_Et11,_Et12);
+                            dataSource.CrearCursoNota(_cod,Et13,_Et14,_Et15);
+                            dataSource.CrearCursoNota(_cod,Et16,_Et17,_Et18);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+                case 7:
+                    if (curso.length()==0)
+                    {
+                        etCurso.setError("Ingrese el curso");
+                        etCurso.setBackgroundColor(Color.TRANSPARENT);
+                    } else {
+                        //INGRESO DE DATOS
+                        String Et1= et1.getText().toString();
+                        String Et2= et2.getText().toString();
+                        int _Et2 = 0;
+                        _Et2 = Integer.parseInt(String.valueOf(_Et2));
+                        String Et3= et3.getText().toString();
+                        int _Et3 = 0;
+                        _Et3 = Integer.parseInt(String.valueOf(_Et3));
+
+                        String Et4= et4.getText().toString();
+                        String Et5= et5.getText().toString();
+                        int _Et5 = 0;
+                        _Et5 = Integer.parseInt(String.valueOf(_Et5));
+                        String Et6= et6.getText().toString();
+                        int _Et6 = 0;
+                        _Et6 = Integer.parseInt(String.valueOf(_Et6));
+
+                        String Et7= et7.getText().toString();
+                        String Et8= et8.getText().toString();
+                        int _Et8 = 0;
+                        _Et8 = Integer.parseInt(String.valueOf(_Et8));
+                        String Et9= et10.getText().toString();
+                        int _Et9 = 0;
+                        _Et9 = Integer.parseInt(String.valueOf(_Et9));
+
+                        String Et10= et10.getText().toString();
+                        String Et11= et11.getText().toString();
+                        int _Et11 = 0;
+                        _Et11 = Integer.parseInt(String.valueOf(_Et11));
+                        String Et12= et12.getText().toString();
+                        int _Et12 = 0;
+                        _Et12 = Integer.parseInt(String.valueOf(_Et12));
+
+                        String Et13= et13.getText().toString();
+                        String Et14= et14.getText().toString();
+                        int _Et14 = 0;
+                        _Et14 = Integer.parseInt(String.valueOf(_Et14));
+                        String Et15= et15.getText().toString();
+                        int _Et15 = 0;
+                        _Et15 = Integer.parseInt(String.valueOf(_Et15));
+
+                        String Et16= et16.getText().toString();
+                        String Et17= et17.getText().toString();
+                        int _Et17 = 0;
+                        _Et17 = Integer.parseInt(String.valueOf(_Et17));
+                        String Et18= et18.getText().toString();
+                        int _Et18 = 0;
+                        _Et18 = Integer.parseInt(String.valueOf(_Et18));
+
+                        String Et19= et19.getText().toString();
+                        String Et20= et20.getText().toString();
+                        int _Et20 = 0;
+                        _Et20 = Integer.parseInt(String.valueOf(_Et20));
+                        String Et21= et21.getText().toString();
+                        int _Et21 = 0;
+                        _Et21 = Integer.parseInt(String.valueOf(_Et21));
+                        if(Et1.length()==0 || Et2.length()==0 || Et3.length()==0 || Et4.length()==0 || Et5.length()==0 || Et6.length()==0 ||
+                                Et7.length()==0 || Et8.length()==0 || Et9.length()==0 || Et10.length()==0 || Et11.length()==0 || Et12.length()==0 ||
+                                Et13.length()==0 || Et14.length()==0 || Et15.length()==0 || Et16.length()==0 || Et17.length()==0 || Et18.length()==0 ||
+                                Et19.length()==0 || Et20.length()==0 || Et21.length()==0){
+                            Toast.makeText(this,"Ingrese los datos necesarios",Toast.LENGTH_SHORT).show();
+                        } else {
+                            dataSource.CrearCurso(curso, c_notas);
+                            dataSource.CrearCursoNota(_cod,Et1,_Et2,_Et3);
+                            dataSource.CrearCursoNota(_cod,Et4,_Et5,_Et6);
+                            dataSource.CrearCursoNota(_cod,Et7,_Et8,_Et9);
+                            dataSource.CrearCursoNota(_cod,Et10,_Et11,_Et12);
+                            dataSource.CrearCursoNota(_cod,Et13,_Et14,_Et15);
+                            dataSource.CrearCursoNota(_cod,Et16,_Et17,_Et18);
+                            dataSource.CrearCursoNota(_cod,Et19,_Et20,_Et21);
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+                    break;
+            }
     }
 
     @Override

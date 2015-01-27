@@ -38,8 +38,8 @@ public class RegistroBDHelper extends SQLiteOpenHelper{
     private static final String CREATE_TABLADETALLENOTA = "create table "
             + TablaDetalleNota.TABLA_DETALLENOTA + "(" + TablaDetalleNota.COLUMNA_ID
             + " integer, " + TablaDetalleNota.COLUMNA_DESCRIPNOTA
-            + " TEXT(255), " + TablaDetalleNota.COLUMNA_NOTA + " REAL, "
-            + TablaDetalleNota.COLUMNA_PORCENTAJE + " REAL)";
+            + " TEXT(255), " + TablaDetalleNota.COLUMNA_NOTA + " integer, "
+            + TablaDetalleNota.COLUMNA_PORCENTAJE + " integer)";
 
 
     public RegistroBDHelper(Context context) {

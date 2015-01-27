@@ -16,8 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
 
@@ -46,6 +44,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
         lvCursos.setAdapter(adaptador);
 
         registerForContextMenu(lvCursos);
+
 
 
         //PUBLICIDAD
@@ -91,7 +90,12 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
 
     public void btnNuevo(View v){
+        String n = String.valueOf(lvCursos.getCount());
         Intent i = new Intent(this,ConfigProm.class);
+        Bundle bun = new Bundle();
+        bun.putString("id",n);
+        i.putExtras(bun);
+
         startActivityForResult(i,requestCode);
     }
 
@@ -122,7 +126,9 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this,((TextView) view).getText(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,((TextView) view).getText(),Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,Ver_Curso.class);
+        startActivity(i);
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {

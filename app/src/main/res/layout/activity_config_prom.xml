@@ -46,7 +46,7 @@
                     android:layout_column="2" />
 
                 <EditText
-                    android:layout_width="204dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tCurso"
                     android:layout_marginLeft="10dp"
@@ -120,7 +120,7 @@
                     <TextView
                         android:layout_width="35dip"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView1"
+                        android:id="@+id/textView3"
                         android:layout_row="2"
                         android:layout_column="1"
                         android:gravity="center"
@@ -156,13 +156,10 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:id="@+id/editText6"
-                        android:layout_alignParentTop="false"
-                        android:layout_alignParentLeft="false"
-                        android:layout_alignParentStart="false"
-                        android:layout_below="@+id/editText3"
-                        android:layout_toLeftOf="@+id/textView1"
                         android:visibility="gone"
-                        android:layout_marginBottom="15dp" />
+                        android:layout_below="@+id/editText3"
+                        android:layout_alignLeft="@+id/editText3"
+                        android:layout_alignStart="@+id/editText3" />
 
                     <TextView
                         android:layout_width="35dip"
@@ -210,11 +207,10 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/editText9"
-                        android:layout_below="@+id/editText6"
-                        android:layout_alignLeft="@+id/editText6"
-                        android:layout_alignStart="@+id/editText6"
                         android:visibility="gone"
-                        android:layout_marginBottom="15dp" />
+                        android:layout_alignTop="@+id/editText8"
+                        android:layout_alignLeft="@+id/editText6"
+                        android:layout_alignStart="@+id/editText6" />
 
                     <TextView
                         android:layout_width="35dip"
@@ -445,6 +441,14 @@
                     android:onClick="btnGrabar"
                     android:layout_marginTop="30dip"
                     android:layout_width="140dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/textView19"
+                    android:layout_row="19"
+                    android:layout_column="4" />
 
             </GridLayout>
         </ScrollView>
